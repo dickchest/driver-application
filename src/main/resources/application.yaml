@@ -3,4 +3,9 @@ spring:
     url: jdbc:postgresql://localhost:5444/driver-api
     username: admin
     password: admin
-
+springdoc:
+  api-docs:
+    enabled: true
+logging:
+  level:
+    org.springdoc: DEBUG
