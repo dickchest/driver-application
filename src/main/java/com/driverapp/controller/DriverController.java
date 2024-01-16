@@ -2,16 +2,24 @@ package com.driverapp.controller;
 
 import com.driverapp.dto.DriverDto;
 import com.driverapp.entity.Driver;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.driverapp.service.DriverService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/drivers")
+@RequiredArgsConstructor
 public class DriverController {
 
+    private final DriverService service;
+
     @PostMapping
-    public Driver save (DriverDto driver) {
-        return new Driver();
+    public Driver save (@RequestBody DriverDto driver) {
+        return service.save(driver);
+    }
+
+    @GetMapping
+    public Iterable<Driver> getAll() {
+        return service.getAll();
     }
 }
