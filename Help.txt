@@ -4,3 +4,7 @@ docker rmi dickchest/driver-api:1.0.0
 ipconfig
 
 docker run -ti --rm -e DATASOURCE_HOST=192.168.0.76 -p8081:8080 dickchest/driver-api:1.0.0
+
+kind --version
+kind delete cluster
+kind create cluster --config kind-config.yaml
