@@ -8,3 +8,19 @@ docker run -ti --rm -e DATASOURCE_HOST=192.168.0.76 -p8081:8080 dickchest/driver
 kind --version
 kind delete cluster
 kind create cluster --config kind-config.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
+kubectl apply -f k8s/deployment.yaml
+kubectl get pods
+
+kubectl get pods --watch
+kubectl delete pods --all (не рабоает, тк кибернетс заново их востанавливает)
+kubectl delete deployments --all
+
+kubectl port-forward driver-api-fdf87cd4c-cln27 8899:8080 - пробросить порт из нутри контейнера
+
+kubectl apply -f k8s/service.yaml
+kubectl get service
+
+kubectl apply -f k8s/ingress.yaml
